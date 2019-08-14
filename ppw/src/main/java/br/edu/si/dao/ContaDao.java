@@ -7,6 +7,27 @@ import br.edu.si.modelo.Conta;
 
 public class ContaDao {
 
+	private static ContaDao dao;
+
+	public static ContaDao abrirConexao() {
+		if (dao == null) {
+			dao = new ContaDao();
+		}
+		return dao;
+	}
+	
+	public static void fecharConexao() {
+		dao = null;
+	}
+
+	private ContaDao() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private List<Conta> contas = new ArrayList<Conta>();
 
 	public void salvar(Conta conta) {
@@ -28,6 +49,10 @@ public class ContaDao {
 
 	public int quantidadeDeRegistros() {
 		return contas.size();
+	}
+
+	public void excluirTudo() {
+		contas = new ArrayList<Conta>();
 	}
 
 }
