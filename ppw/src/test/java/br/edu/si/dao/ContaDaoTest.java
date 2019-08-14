@@ -43,7 +43,6 @@ public class ContaDaoTest {
 
 	@After
 	public void executaDepois() {
-		dao = null;
 		conta = null;
 	}
 
